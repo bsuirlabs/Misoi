@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace Misoi.Image_Processing
 {
@@ -14,10 +10,14 @@ namespace Misoi.Image_Processing
             this.PrepareImage = PrepareImage;
         }
 
-        public void Start(string filePath)
+        public Bitmap Start(string filePath)
         {
-            var pixels = PrepareImage.GetPixels(filePath);
+            Bitmap bitmap = new Bitmap(filePath);
+            var filteredImage = PrepareImage.FilterImage(bitmap);
+            return filteredImage;
         }
+
+
 
     }
 }

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Misoi.Image_Processing;
 
@@ -32,13 +26,15 @@ namespace Misoi
                 mainImage.Height = image.Height;
                 mainImage.Width = image.Width;
                 mainImage.Image = image;
+                FilteredImage.Height = image.Height;
+                FilteredImage.Width = image.Width;
             }
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
             Starter starter = new Starter(new ProcessImage(new PrepareImage()));
-            starter.Start(FilePathTB.Text);
+            FilteredImage.Image = starter.Start(FilePathTB.Text);
         }
     }
 }

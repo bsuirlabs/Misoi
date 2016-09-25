@@ -33,12 +33,14 @@
             this.FilePathTB = new System.Windows.Forms.TextBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.mainImage = new System.Windows.Forms.PictureBox();
+            this.FilteredImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FilteredImage)).BeginInit();
             this.SuspendLayout();
             // 
             // StartBtn
             // 
-            this.StartBtn.Location = new System.Drawing.Point(511, 40);
+            this.StartBtn.Location = new System.Drawing.Point(825, 28);
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(75, 23);
             this.StartBtn.TabIndex = 0;
@@ -48,7 +50,7 @@
             // 
             // OpenFileBtn
             // 
-            this.OpenFileBtn.Location = new System.Drawing.Point(524, 89);
+            this.OpenFileBtn.Location = new System.Drawing.Point(838, 77);
             this.OpenFileBtn.Name = "OpenFileBtn";
             this.OpenFileBtn.Size = new System.Drawing.Size(75, 23);
             this.OpenFileBtn.TabIndex = 1;
@@ -58,7 +60,7 @@
             // 
             // FilePathTB
             // 
-            this.FilePathTB.Location = new System.Drawing.Point(487, 119);
+            this.FilePathTB.Location = new System.Drawing.Point(801, 107);
             this.FilePathTB.Name = "FilePathTB";
             this.FilePathTB.Size = new System.Drawing.Size(100, 20);
             this.FilePathTB.TabIndex = 2;
@@ -75,11 +77,20 @@
             this.mainImage.TabIndex = 3;
             this.mainImage.TabStop = false;
             // 
+            // FilteredImage
+            // 
+            this.FilteredImage.Location = new System.Drawing.Point(31, 269);
+            this.FilteredImage.Name = "FilteredImage";
+            this.FilteredImage.Size = new System.Drawing.Size(100, 50);
+            this.FilteredImage.TabIndex = 4;
+            this.FilteredImage.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 356);
+            this.ClientSize = new System.Drawing.Size(1038, 573);
+            this.Controls.Add(this.FilteredImage);
             this.Controls.Add(this.mainImage);
             this.Controls.Add(this.FilePathTB);
             this.Controls.Add(this.OpenFileBtn);
@@ -87,6 +98,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.mainImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FilteredImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,6 +111,7 @@
         private System.Windows.Forms.TextBox FilePathTB;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.PictureBox mainImage;
+        private System.Windows.Forms.PictureBox FilteredImage;
     }
 }
 
