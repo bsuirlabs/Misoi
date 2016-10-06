@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Misoi.Image_Processing;
 
 namespace Misoi
 {
@@ -46,8 +45,7 @@ namespace Misoi
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            Starter starter = new Starter(new ProcessImage(new PrepareImage()));
-            FilteredImage.Image = starter.Start(FilePathTB.Text);
+            
         }
     }
 }

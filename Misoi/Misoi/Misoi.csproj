@@ -52,11 +52,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Image Processing\IPrepareImage.cs" />
-    <Compile Include="Image Processing\IProcessImage.cs" />
-    <Compile Include="Image Processing\PrepareImage.cs" />
-    <Compile Include="Image Processing\ProcessImage.cs" />
-    <Compile Include="Image Processing\Starter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
