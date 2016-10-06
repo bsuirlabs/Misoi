@@ -50,7 +50,7 @@
             // 
             // OpenFileBtn
             // 
-            this.OpenFileBtn.Location = new System.Drawing.Point(838, 77);
+            this.OpenFileBtn.Location = new System.Drawing.Point(825, 78);
             this.OpenFileBtn.Name = "OpenFileBtn";
             this.OpenFileBtn.Size = new System.Drawing.Size(75, 23);
             this.OpenFileBtn.TabIndex = 1;
@@ -73,15 +73,15 @@
             // 
             this.mainImage.Location = new System.Drawing.Point(31, 28);
             this.mainImage.Name = "mainImage";
-            this.mainImage.Size = new System.Drawing.Size(290, 154);
+            this.mainImage.Size = new System.Drawing.Size(309, 251);
             this.mainImage.TabIndex = 3;
             this.mainImage.TabStop = false;
             // 
             // FilteredImage
             // 
-            this.FilteredImage.Location = new System.Drawing.Point(31, 269);
+            this.FilteredImage.Location = new System.Drawing.Point(363, 28);
             this.FilteredImage.Name = "FilteredImage";
-            this.FilteredImage.Size = new System.Drawing.Size(100, 50);
+            this.FilteredImage.Size = new System.Drawing.Size(311, 251);
             this.FilteredImage.TabIndex = 4;
             this.FilteredImage.TabStop = false;
             // 

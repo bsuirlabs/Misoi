@@ -26,7 +26,7 @@ namespace Misoi.Image_Processing
         public Bitmap FilterImage(Bitmap bitmap)
         {
             var filteredImage = MedianFilter(bitmap);
-            filteredImage = MonochromeFilter(filteredImage, 62);
+            filteredImage = MonochromeFilter(filteredImage, 195);
             //filteredImage = BradleyFilter(filteredImage);
             return filteredImage;
         }
@@ -142,16 +142,16 @@ namespace Misoi.Image_Processing
                         {
                             var p = bitmap.GetPixel(i + i1 - 1, j + j1 - 1);
 
-                            arrR[i1 * 3 + j1] = ((p.R + p.G + p.B) / 3) & 0xff;
-                            arrG[i1 * 3 + j1] = ((p.R + p.G + p.B) / 3) >> 8 & 0xff;
-                            arrB[i1 * 3 + j1] = ((p.R + p.G + p.B) / 3) >> 16 & 0xff;
+                            arrR[i1 * 3 + j1] = ((p.R + p.G + p.B) / 3) ;
+                            arrG[i1 * 3 + j1] = ((p.R + p.G + p.B) / 3) ;
+                            arrB[i1 * 3 + j1] = ((p.R + p.G + p.B) / 3) ;
                         }
                     }
                     Array.Sort(arrR);
                     Array.Sort(arrG);
                     Array.Sort(arrB);
 
-                    outImage.SetPixel(i, j, Color.FromArgb(arrR[3], arrG[4], arrB[5]));
+                    outImage.SetPixel(i, j, Color.FromArgb(arrR[4], arrG[4], arrB[4]));
                 }
             }
             return outImage;

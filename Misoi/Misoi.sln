@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Misoi", "Misoi\Misoi.csproj", "{39344B72-1A0F-4C88-BCCF-6187FD7AC389}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filtering", "Project1\Filtering.csproj", "{6F8BAA73-8E7A-4320-83DB-7981AE08872F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{39344B72-1A0F-4C88-BCCF-6187FD7AC389}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39344B72-1A0F-4C88-BCCF-6187FD7AC389}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39344B72-1A0F-4C88-BCCF-6187FD7AC389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F8BAA73-8E7A-4320-83DB-7981AE08872F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F8BAA73-8E7A-4320-83DB-7981AE08872F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F8BAA73-8E7A-4320-83DB-7981AE08872F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F8BAA73-8E7A-4320-83DB-7981AE08872F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
