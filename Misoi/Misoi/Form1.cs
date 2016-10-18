@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Filtering;
+using Filtering = Filtering.ApplyFilters;
 
 namespace Misoi
 {
@@ -10,6 +12,10 @@ namespace Misoi
         {
             InitializeComponent();
         }
+
+        private Bitmap _originalPicture { get; set; }
+
+        private Bitmap _finalPicture { get; set; }
 
         private void OpenFileBtn_Click(object sender, EventArgs e)
         {
@@ -23,6 +29,7 @@ namespace Misoi
                 FilePathTB.Text = openFileDialog.FileName;
                 Image image = Image.FromFile(FilePathTB.Text);
                 mainImage.Image = ScaleImage(image, mainImage.Width, mainImage.Height);
+                _originalPicture = new Bitmap(mainImage.Image);
             }
         }
 
@@ -45,7 +52,8 @@ namespace Misoi
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            
+            IFiltering filters = new ApplyFilters();
+            FilteredImage.Image = filters.FiterPicture(_originalPicture);
         }
     }
 }
