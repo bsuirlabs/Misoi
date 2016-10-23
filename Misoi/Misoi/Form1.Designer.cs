@@ -34,13 +34,15 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.mainImage = new System.Windows.Forms.PictureBox();
             this.FilteredImage = new System.Windows.Forms.PictureBox();
+            this.medianCB = new System.Windows.Forms.CheckBox();
+            this.monochromeCB = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FilteredImage)).BeginInit();
             this.SuspendLayout();
             // 
             // StartBtn
             // 
-            this.StartBtn.Location = new System.Drawing.Point(825, 28);
+            this.StartBtn.Location = new System.Drawing.Point(732, 28);
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(75, 23);
             this.StartBtn.TabIndex = 0;
@@ -50,7 +52,7 @@
             // 
             // OpenFileBtn
             // 
-            this.OpenFileBtn.Location = new System.Drawing.Point(825, 78);
+            this.OpenFileBtn.Location = new System.Drawing.Point(732, 104);
             this.OpenFileBtn.Name = "OpenFileBtn";
             this.OpenFileBtn.Size = new System.Drawing.Size(75, 23);
             this.OpenFileBtn.TabIndex = 1;
@@ -60,7 +62,7 @@
             // 
             // FilePathTB
             // 
-            this.FilePathTB.Location = new System.Drawing.Point(801, 107);
+            this.FilePathTB.Location = new System.Drawing.Point(732, 133);
             this.FilePathTB.Name = "FilePathTB";
             this.FilePathTB.Size = new System.Drawing.Size(100, 20);
             this.FilePathTB.TabIndex = 2;
@@ -85,11 +87,33 @@
             this.FilteredImage.TabIndex = 4;
             this.FilteredImage.TabStop = false;
             // 
+            // medianCB
+            // 
+            this.medianCB.AutoSize = true;
+            this.medianCB.Location = new System.Drawing.Point(732, 57);
+            this.medianCB.Name = "medianCB";
+            this.medianCB.Size = new System.Drawing.Size(86, 17);
+            this.medianCB.TabIndex = 5;
+            this.medianCB.Text = "Median Filter";
+            this.medianCB.UseVisualStyleBackColor = true;
+            // 
+            // monochromeCB
+            // 
+            this.monochromeCB.AutoSize = true;
+            this.monochromeCB.Location = new System.Drawing.Point(732, 81);
+            this.monochromeCB.Name = "monochromeCB";
+            this.monochromeCB.Size = new System.Drawing.Size(113, 17);
+            this.monochromeCB.TabIndex = 6;
+            this.monochromeCB.Text = "Monochrome Filter";
+            this.monochromeCB.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1038, 573);
+            this.ClientSize = new System.Drawing.Size(877, 309);
+            this.Controls.Add(this.monochromeCB);
+            this.Controls.Add(this.medianCB);
             this.Controls.Add(this.FilteredImage);
             this.Controls.Add(this.mainImage);
             this.Controls.Add(this.FilePathTB);
@@ -112,6 +136,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.PictureBox mainImage;
         private System.Windows.Forms.PictureBox FilteredImage;
+        private System.Windows.Forms.CheckBox medianCB;
+        private System.Windows.Forms.CheckBox monochromeCB;
     }
 }
 

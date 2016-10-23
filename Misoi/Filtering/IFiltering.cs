@@ -10,6 +10,6 @@ namespace Filtering
 {
     public interface IFiltering
     {
-        Bitmap FiterPicture(Bitmap inputPicture);
+        Bitmap FiterPicture(Bitmap inputPicture, bool applyMedian, bool applyMonochrome);
     }
 }

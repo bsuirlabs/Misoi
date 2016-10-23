@@ -12,11 +12,17 @@ namespace Filtering
     {
         private Color[,] _allPixels { get; set; }
 
-        public Bitmap FiterPicture(Bitmap inputPicture)
+        public Bitmap FiterPicture(Bitmap pictureToProceed, bool applyMedian, bool applyMonochrome)
         {
-            Bitmap outputPicture = ApplyMedianFilter(inputPicture);
-            outputPicture = ApplyMonochrom(outputPicture);
-            return outputPicture;
+            if (applyMedian)
+            {
+                pictureToProceed = ApplyMedianFilter(pictureToProceed);
+            }
+            if (applyMonochrome)
+            {
+                pictureToProceed = ApplyMonochrom(pictureToProceed);
+            }
+            return pictureToProceed;
         }
 
         private Bitmap ApplyMonochrom(Bitmap inputPicture)
