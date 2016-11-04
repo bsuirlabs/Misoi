@@ -36,6 +36,8 @@
             this.FilteredImage = new System.Windows.Forms.PictureBox();
             this.medianCB = new System.Windows.Forms.CheckBox();
             this.monochromeCB = new System.Windows.Forms.CheckBox();
+            this.levelTB = new System.Windows.Forms.TextBox();
+            this.windowsSizeTB = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FilteredImage)).BeginInit();
             this.SuspendLayout();
@@ -107,11 +109,29 @@
             this.monochromeCB.Text = "Monochrome Filter";
             this.monochromeCB.UseVisualStyleBackColor = true;
             // 
+            // levelTB
+            // 
+            this.levelTB.Location = new System.Drawing.Point(710, 183);
+            this.levelTB.Name = "levelTB";
+            this.levelTB.Size = new System.Drawing.Size(100, 20);
+            this.levelTB.TabIndex = 7;
+            this.levelTB.Text = "70";
+            // 
+            // windowsSizeTB
+            // 
+            this.windowsSizeTB.Location = new System.Drawing.Point(710, 220);
+            this.windowsSizeTB.Name = "windowsSizeTB";
+            this.windowsSizeTB.Size = new System.Drawing.Size(100, 20);
+            this.windowsSizeTB.TabIndex = 8;
+            this.windowsSizeTB.Text = "5";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(877, 309);
+            this.Controls.Add(this.windowsSizeTB);
+            this.Controls.Add(this.levelTB);
             this.Controls.Add(this.monochromeCB);
             this.Controls.Add(this.medianCB);
             this.Controls.Add(this.FilteredImage);
@@ -138,6 +158,8 @@
         private System.Windows.Forms.PictureBox FilteredImage;
         private System.Windows.Forms.CheckBox medianCB;
         private System.Windows.Forms.CheckBox monochromeCB;
+        private System.Windows.Forms.TextBox levelTB;
+        private System.Windows.Forms.TextBox windowsSizeTB;
     }
 }
 

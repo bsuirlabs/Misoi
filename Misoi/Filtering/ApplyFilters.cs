@@ -12,22 +12,22 @@ namespace Filtering
     {
         private Color[,] _allPixels { get; set; }
 
-        public Bitmap FiterPicture(Bitmap pictureToProceed, bool applyMedian, bool applyMonochrome)
+        public Bitmap FiterPicture(Bitmap pictureToProceed, bool applyMedian, bool applyMonochrome, int? level, int windowSize)
         {
             if (applyMedian)
             {
-                pictureToProceed = ApplyMedianFilter(pictureToProceed);
+                pictureToProceed = ApplyMedianFilter(pictureToProceed, windowSize);
             }
-            if (applyMonochrome)
+            if (applyMonochrome && level.HasValue)
             {
-                pictureToProceed = ApplyMonochrom(pictureToProceed);
+                pictureToProceed = ApplyMonochrom(pictureToProceed, level.Value);
             }
             return pictureToProceed;
         }
 
-        private Bitmap ApplyMonochrom(Bitmap inputPicture)
+        private Bitmap ApplyMonochrom(Bitmap inputPicture, int level)
         {
-            int level = getOtsuThreshold(inputPicture);
+            //int level = getOtsuThreshold(inputPicture);
             var outputImage = new Bitmap(inputPicture.Width, inputPicture.Height);
             Color color = new Color();
             for (int i = 0; i < inputPicture.Width; i++)
@@ -43,19 +43,19 @@ namespace Filtering
             return outputImage;
         }
 
-        private Bitmap ApplyMedianFilter(Bitmap inputImage)
+        private Bitmap ApplyMedianFilter(Bitmap inputImage, int size)
         {
             _allPixels = GetPixels(inputImage);
             var width = inputImage.Width;
             var height = inputImage.Height;
-            var outputImage = new Bitmap(width - 2, height - 2);
+            var outputImage = new Bitmap(width - size / 2 + 1, height - size / 2 + 1);
             Color medianPixel;
-            for (int i = 3; i < (width - 4); i++)
+            for (int i = size / 2; i < width - (size / 2 + 1); i++)
             {
-                for (int j = 3; j < (height - 4); j++)
+                for (int j = size / 2; j < height - (size / 2 + 1); j++)
                 {
-                    medianPixel = SearchMedianPixel(i, j);
-                    outputImage.SetPixel(i - 3, j - 3, medianPixel);
+                    medianPixel = SearchMedianPixel(i, j, size);
+                    outputImage.SetPixel(i - size / 2, j - size / 2, medianPixel);
                 }
             }
             return outputImage;
@@ -74,16 +74,16 @@ namespace Filtering
             return allPixels;
         }
 
-        private Color SearchMedianPixel(int x, int y)
+        private Color SearchMedianPixel(int x, int y, int size)
         {
             Color pixel;
-            int[] arrayR = new int[49];
-            int[] arrayG = new int[49];
-            int[] arrayB = new int[49];
+            int[] arrayR = new int[size * size];
+            int[] arrayG = new int[size * size];
+            int[] arrayB = new int[size * size];
             int countPixel = 0;
-            for (int i = x - 3; i < x + 4; i++)
+            for (int i = x - size / 2; i < x + size / 2 + 1; i++)
             {
-                for (int j = y - 3; j < y + 4; j++)
+                for (int j = y - size / 2; j < y + size / 2 + 1; j++)
                 {
                     arrayR[countPixel] = _allPixels[i, j].R;
                     arrayG[countPixel] = _allPixels[i, j].G;
@@ -94,7 +94,7 @@ namespace Filtering
             Array.Sort(arrayR);
             Array.Sort(arrayG);
             Array.Sort(arrayB);
-            pixel = Color.FromArgb(arrayR[24], arrayG[24], arrayB[24]);
+            pixel = Color.FromArgb(arrayR[size * size / 2], arrayG[size * size / 2], arrayB[size * size / 2]);
             return pixel;
         }
 

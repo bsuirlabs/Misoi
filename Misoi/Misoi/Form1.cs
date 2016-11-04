@@ -53,7 +53,7 @@ namespace Misoi
         private void StartBtn_Click(object sender, EventArgs e)
         {
             IFiltering filters = new ApplyFilters();
-            FilteredImage.Image = filters.FiterPicture(_originalPicture, medianCB.Checked, monochromeCB.Checked);
+            FilteredImage.Image = filters.FiterPicture(_originalPicture, medianCB.Checked, monochromeCB.Checked, Int32.Parse(levelTB.Text), Int32.Parse(windowsSizeTB.Text));
         }
     }
 }
