@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Misoi", "Misoi\Misoi.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filtering", "Filtering\Filtering.csproj", "{171A63DE-58B5-4BC7-BDFE-B726797E77F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segmentation", "Segmentation\Segmentation.csproj", "{2D0E5A71-DCBF-4714-B183-FA7534229B06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{171A63DE-58B5-4BC7-BDFE-B726797E77F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{171A63DE-58B5-4BC7-BDFE-B726797E77F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{171A63DE-58B5-4BC7-BDFE-B726797E77F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D0E5A71-DCBF-4714-B183-FA7534229B06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D0E5A71-DCBF-4714-B183-FA7534229B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D0E5A71-DCBF-4714-B183-FA7534229B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D0E5A71-DCBF-4714-B183-FA7534229B06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

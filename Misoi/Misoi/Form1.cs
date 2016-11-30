@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Filtering;
+using Segmentation;
 using Filtering = Filtering.ApplyFilters;
 
 namespace Misoi
@@ -54,6 +55,14 @@ namespace Misoi
         {
             IFiltering filters = new ApplyFilters();
             FilteredImage.Image = filters.FiterPicture(_originalPicture, medianCB.Checked, monochromeCB.Checked, Int32.Parse(levelTB.Text), Int32.Parse(windowsSizeTB.Text));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _originalPicture = new Bitmap(mainImage.Image);
+            ISegmentation segmentation = new ApplySegmentation();
+            FilteredImage.Image = FilteredImage.InitialImage;
+            FilteredImage.Image = segmentation.ExecuteSegmentation(_originalPicture, double.Parse(textBox1.Text), double.Parse(textBox2.Text), double.Parse(textBox3.Text), double.Parse(textBox4.Text));
         }
     }
 }
