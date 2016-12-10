@@ -105,6 +105,7 @@
             this.medianCB.TabIndex = 5;
             this.medianCB.Text = "Median Filter";
             this.medianCB.UseVisualStyleBackColor = true;
+            this.medianCB.Visible = false;
             // 
             // monochromeCB
             // 
@@ -115,6 +116,7 @@
             this.monochromeCB.TabIndex = 6;
             this.monochromeCB.Text = "Monochrome Filter";
             this.monochromeCB.UseVisualStyleBackColor = true;
+            this.monochromeCB.Visible = false;
             // 
             // levelTB
             // 

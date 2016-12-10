@@ -15,15 +15,18 @@ namespace Filtering
 
         public Bitmap FiterPicture(Bitmap pictureToProceed, bool applyMedian, bool applyMonochrome, int? level, int windowSize)
         {
+            var newPicture = new Bitmap(pictureToProceed);
+            applyMedian = false;
+            applyMonochrome = true;
             if (applyMedian)
             {
-                pictureToProceed = ApplyMedianFilter(pictureToProceed, windowSize);
+                newPicture = ApplyMedianFilter(newPicture, windowSize);
             }
-            if (applyMonochrome && level.HasValue)
+            if (applyMonochrome)
             {
-                pictureToProceed = ApplyMonochrom(pictureToProceed);
+                newPicture = ApplyMonochrom(newPicture);
             }
-            return pictureToProceed;
+            return newPicture;
         }
 
         #region Monochrome

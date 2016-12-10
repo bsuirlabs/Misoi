@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Filtering;
 using Segmentation;
+using Skewing;
 using Filtering = Filtering.ApplyFilters;
 
 namespace Misoi
@@ -54,7 +55,10 @@ namespace Misoi
         private void StartBtn_Click(object sender, EventArgs e)
         {
             IFiltering filters = new ApplyFilters();
-            FilteredImage.Image = filters.FiterPicture(_originalPicture, medianCB.Checked, monochromeCB.Checked, Int32.Parse(levelTB.Text), Int32.Parse(windowsSizeTB.Text));
+            ISkew skew = new Skew();
+            var s = filters.FiterPicture(_originalPicture, medianCB.Checked, monochromeCB.Checked, Int32.Parse(levelTB.Text), Int32.Parse(windowsSizeTB.Text));
+            //textBox1.Text = skew.ExecuteSkewing(s, int.Parse(textBox3.Text)).ToString();
+            FilteredImage.Image = skew.ExecuteSkewing(_originalPicture, s, 2);
         }
 
         private void button1_Click(object sender, EventArgs e)
