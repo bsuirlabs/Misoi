@@ -84,6 +84,10 @@
       <Project>{171a63de-58b5-4bc7-bdfe-b726797e77f3}</Project>
       <Name>Filtering</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Perceptron\Perceptron.csproj">
+      <Project>{d5083d6c-0089-4ea5-9ba2-fa5af6c008d3}</Project>
+      <Name>Perceptron</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Segmentation\Segmentation.csproj">
       <Project>{2d0e5a71-dcbf-4714-b183-fa7534229b06}</Project>
       <Name>Segmentation</Name>

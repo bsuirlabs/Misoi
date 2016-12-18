@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -269,6 +270,177 @@ namespace Segmentation
         {
             internal int leftLine { get; set; }
             internal int rightLine { get; set; }
+        }
+
+        public int x1 = 100000, y1, x2, y2 = 100000, y3, x3 = 0, x4, y4 = 0;
+
+        public List<Bitmap> GetLetters(Bitmap image)
+        {
+            return detectString(image);
+        } 
+
+        private Bitmap border(Bitmap image)
+        {
+            Bitmap lastStateImage = new Bitmap(image);
+            x1 = 100000;
+            y1 = 0;
+            x2 = 0;
+            y2 = 100000;
+            y3 = 0;
+            x3 = 0;
+            x4 = 0;
+            y4 = 0;
+            Color color = new Color();
+            for (int x = 0; x < lastStateImage.Width - 1; x++)
+            {
+                for (int y = 0; y < lastStateImage.Height - 1; y++)
+                {
+                    color = lastStateImage.GetPixel(x, y);
+                    if ((color.R == 0) && (color.G == 0) && (color.B == 0))
+                    {
+                        if (x < x1)
+                        {
+                            x1 = x;
+                            y1 = y;
+                        }
+                        if (y < y2)
+                        {
+                            x2 = x;
+                            y2 = y;
+                        }
+                        if (x > x3)
+                        {
+                            x3 = x;
+                            y3 = y;
+                        }
+                        if (y > y4)
+                        {
+                            x4 = x;
+                            y4 = y;
+                        }
+                    }
+                }
+            }
+            Graphics g = Graphics.FromImage(lastStateImage);
+            Pen p = new Pen(Color.Red, 3);
+            /*g.DrawLine(p, x1 - 5, y1 - 5, x2 + 5, y2 - 5);
+            g.DrawLine(p, x2 + 5, y2 - 5, x3 + 5, y3 + 5);
+            g.DrawLine(p, x3 + 5, y3 + 5, x4 - 5, y4 + 5);
+            g.DrawLine(p, x4 - 5, y4 + 5, x1 - 5, y1 - 5);*/
+            return lastStateImage;
+        }
+        private List<Bitmap> detectString(Bitmap image)
+        {
+            List<Bitmap> result = new List<Bitmap>();
+            Color color = new Color();
+            bool flag_black = false, flag_previus_string_black = false, flag_white = false, flag_previus_string_white = false;
+            var lastStateImage = border(image);
+            Graphics g = Graphics.FromImage(lastStateImage);
+            Pen p = new Pen(Color.Red, 3);
+            /*g.DrawLine(p, x1 - 5, y2 - 5, x3 + 5, y2 - 5);
+            g.DrawLine(p, x3 + 5, y2 - 5, x3 + 5, y4 + 5);
+            g.DrawLine(p, x3 + 5, y4 + 5, x1 - 5, y4 + 5);
+            g.DrawLine(p, x1 - 5, y4 + 5, x1 - 5, y2 - 5);*/
+            Pen pen = new Pen(Color.Blue, 1);
+            int y_white_string = 0, y_previus_string = 0;
+            g.DrawLine(pen, x1, y2 - 1, x3, y2 - 1);
+            List<int> yList = new List<int>();
+            yList.Add(y2 - 1);
+            for (int j = y2 - 1; j <= y4 + 1; j++)
+            {
+                flag_black = false;
+                for (int i = x1 - 1; i <= x3 + 1; i++)
+                {
+                    color = lastStateImage.GetPixel(i, j);
+                    if ((color.R == 0) && (color.G == 0) && (color.B == 0))
+                    {
+                        flag_black = true;
+                        flag_previus_string_black = true;
+                    }
+
+                }
+                if (!flag_black)
+                {
+                    if (flag_previus_string_black)
+                    {
+                        flag_previus_string_black = false;
+                        g.DrawLine(pen, x1, j, x3, j);
+                        flag_previus_string_white = true;
+                        yList.Add(j);
+                    }
+
+                }
+                if (flag_black)
+                {
+                    if (flag_previus_string_white)
+                    {
+                        flag_previus_string_white = false;
+                        g.DrawLine(pen, x1, j - 1, x3, j - 1);
+                        yList.Add(j - 1);
+                    }
+                }
+            }
+            int[] yArray = yList.ToArray();
+            int countString = 0;
+            if (yArray.Length % 2 == 0)
+                countString = yArray.Length / 2;
+            else
+                countString = yArray.Length / 2 + 1;
+
+            int start_x = 0;
+            int finish_x = 0;
+            Bitmap CroppedImage;
+            string path;
+            int countLetters = 0;
+            for (int count = 0; count < yArray.Length; count += 2)
+            {
+                /* if (count == 0)
+                     start_y = yArray[0] - 1;
+                 else
+                     start_y = yArray[2 * count - 2] - 1;*/
+
+                for (int i = x1 - 1; i <= x3 + 1; i++)
+                {
+                    flag_black = false;
+                    for (int j = yArray[count] - 1; j <= yArray[count + 1] + 1; j++)
+                    {
+                        color = lastStateImage.GetPixel(i, j);
+                        if ((color.R == 0) && (color.G == 0) && (color.B == 0))
+                        {
+                            flag_black = true;
+                            flag_previus_string_black = true;
+                        }
+
+                    }
+                    if (!flag_black)
+                    {
+                        if (flag_previus_string_black)
+                        {
+                            flag_previus_string_black = false;
+                            g.DrawLine(pen, i, yArray[count], i, yArray[count + 1]);
+                            flag_previus_string_white = true;
+                            countLetters++;
+                            CroppedImage = lastStateImage.Clone(new System.Drawing.Rectangle(start_x + 1, yArray[count] + 1, i - start_x - 1, yArray[count + 1] - yArray[count] - 1), lastStateImage.PixelFormat);
+                            //path = "D:\\temp\\res\\" + countLetters.ToString() + ".jpg";
+                            result.Add(CroppedImage);
+                            //CroppedImage.Save(path, ImageFormat.Jpeg);
+                        }
+
+                    }
+                    if (flag_black)
+                    {
+                        if (flag_previus_string_white)
+                        {
+                            flag_previus_string_white = false;
+                            g.DrawLine(pen, i - 1, yArray[count], i - 1, yArray[count + 1]);
+                            start_x = i - 1;
+                        }
+                    }
+
+                }
+            }
+            //pictureBox2.Image = lastStateImage;
+            return result;
         }
     }
 }
