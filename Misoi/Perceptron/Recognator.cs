@@ -14,7 +14,27 @@ namespace Perceptron
         {
             IHelper helper = new Helpers();
             var neuroWeb = helper.GetNeurons(letterBitmap);
+            if (IsLetter(neuroWeb))
+            {
+                return ' ';
+            }
             return RecognizeLetter(neuroWeb);
+        }
+
+        private bool IsLetter(Helpers.Neuron[] neuroWeb)
+        {
+            bool isAnyBlackDots = false;
+            for (int x = 0; x < 60; x++)
+            {
+                for (int y = 0; y < 120; y++)
+                {
+                    if (neuroWeb[0].Input[x, y] != Color.White)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         private char RecognizeLetter(Helpers.Neuron[] neuroWeb)
